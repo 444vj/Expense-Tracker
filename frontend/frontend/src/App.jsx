@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import bg from './img/bg.png'
 import { MainLayout } from "./styles/Layouts";
+import Orb from "./components/Orb/Orb";
 
 
 
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <AppStyled bg={bg}> 
+      <Orb />
       <MainLayout>
         
       </MainLayout>
@@ -19,6 +21,7 @@ function App() {
 const AppStyled = styled.div`
 height: 100vh;
 background-image: url(${props => props.bg});
+background-size: cover ;
 position: relative;
 `;
 
