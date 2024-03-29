@@ -7,7 +7,6 @@ import useWindowSize from '../../utils/useWindowSize'
 const Orb = () => {
 
     const {width, height} = useWindowSize()
-    console.log(width, height)
 
     const moveOrb = keyframes`
       0%{
@@ -27,7 +26,7 @@ const Orb = () => {
         position: absolute;
         margin-top: -37vh;
         margin-left: -37vh;
-        background: linear-gradient(180deg, #F56692 0%, #F2994A 100%);
+        background: linear-gradient(180deg, #a2d2ff 0%, #ffc8dd 100%);
         filter: blur(400px);
         animation: ${moveOrb} 30s alternate linear infinite;
     `;

@@ -28,6 +28,9 @@ const Form = () => {
     const handleSubmit = e => {
         e.preventDefault()
         addIncome(inputState)
+        getIncomes()
+
+        // to clear the inputs after submission
         setInputState({
             title: '',
             amount: '',
@@ -73,7 +76,7 @@ const Form = () => {
                     <option value=""  disabled >Select Option</option>
                     <option value="salary">Salary</option>
                     <option value="freelancing">Freelancing</option>
-                    <option value="investments">Investiments</option>
+                    <option value="investments">Investments</option>
                     <option value="stocks">Stocks</option>
                     <option value="bitcoin">Bitcoin</option>
                     <option value="bank">Bank Transfer</option>  
@@ -118,8 +121,8 @@ const FormStyled = styled.form`
         font-size: inherit;
         outline: none;
         border: none;
-        padding: .5rem 1rem;
-        border-radius: 5px;
+        padding: .7rem;
+        border-radius: 15px;
         border: 2px solid #fff;
         background: transparent;
         resize: none;

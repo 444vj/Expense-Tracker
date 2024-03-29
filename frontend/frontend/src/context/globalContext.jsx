@@ -16,10 +16,33 @@ export const GlobalProvider = ({children}) => {
             .catch((err) => {
                 setError(err.response.data.message)
             })
+            getIncomes()
     } 
 
+    const getIncomes = async () => {
+        const response = await axios.get(`${BASE_URL}get-incomes`)
+        setIncomes(response.data)
+    }
+
+    const deleteIncome = async (id) =>{
+        const res = await axios.delete(`${BASE_URL}delete-income/${id}`)
+        getIncomes()
+    }
+
+    const totalIncome = () =>{
+        let totalInc = 0;
+        incomes.map((income) => {
+            totalInc = totalInc + income.amount
+        })
+        return totalInc
+    }
+
+
+
+
+
     return(
-        <GlobalContext.Provider value={{addIncome}}>
+        <GlobalContext.Provider value={{addIncome, getIncomes, incomes, deleteIncome, totalIncome}}>
             {children}
         </GlobalContext.Provider>
     )

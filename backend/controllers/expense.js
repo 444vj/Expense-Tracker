@@ -1,6 +1,6 @@
-const IncomeSchema = require("../models/IncomeModel");
+const ExpenseSchema = require("../models/ExpenseModel");
 
-exports.addIncome = async (req, res) => {
+exports.addExpense = async (req, res) => {
   const { title, amount, category, description, date } = req.body;
 
   // Validation checks
@@ -17,7 +17,8 @@ exports.addIncome = async (req, res) => {
   if (!date) {
     errors.push("Date is required");
   }
-  if (amount && Number(amount) <= 0) {
+  if (amount <= 0 || isNaN(amount)) {
+    // Check for positive number and NaN
     errors.push("Amount must be a positive number");
   }
 
@@ -27,24 +28,23 @@ exports.addIncome = async (req, res) => {
   }
 
   try {
-    // Parse date string (assuming ISO 8601)
     const parsedDate = new Date(date);
     if (isNaN(parsedDate.getTime())) {
       return res
         .status(400)
-        .json({ message: "Invalid date format. Use YYYY-MM-DD." });
+        .json({ message: "Invalid Date format. Use YYYY-MM-DD." });
     }
 
-    const income = new IncomeSchema({
+    // Create a new Expense object
+    const expense = new ExpenseSchema({
       title,
       amount: Number(amount),
       category,
       description,
-      date: parsedDate,
+      date,
     });
 
-    // Mongoose validation (if using middleware)
-    const validationError = income.validateSync();
+    const validationError = expense.validateSync();
     if (validationError) {
       const errors = validationError.errors;
       return res
@@ -52,30 +52,41 @@ exports.addIncome = async (req, res) => {
         .json({ message: errors.map((error) => error.message).join(", ") });
     }
 
-    await income.save();
-    res.status(200).json({ message: "Income Added" });
-  } catch (error) {
-    console.error(error); // Log the specific error object for debugging
-    res.status(500).json({ message: "Internal Server Error" });
+    await expense.save();
+    res.status(200).json({ message: "Expense Added" });
+  } 
+  catch (error) 
+  {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" }); // More specific message
   }
+
+  // Removed console.log(income) - not needed for functionality
 };
 
-exports.getIncomes = async (req, res) => {
-  try {
-    const incomes = await IncomeSchema.find().sort({ createdAt: -1 });
-    res.status(200).json(incomes);
-  } catch (error) {
+exports.getExpenses = async (req, res) => {
+  try 
+  {
+    const expenses = await ExpenseSchema.find().sort({ createdAt: -1 });
+    res.status(200).json(expenses);
+  } 
+  catch (error) 
+  {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
-exports.deleteIncome = async (req, res) => {
+exports.deleteExpense = async (req, res) => {
   const { id } = req.params;
-  try {
-    await IncomeSchema.findByIdAndDelete(id);
-    res.status(200).json({ message: "Income Deleted" });
-  } catch (error) {
+
+  try 
+  {
+    await ExpenseSchema.findByIdAndDelete(id);
+    res.status(200).json({ message: "Expense Deleted" });
+  } 
+  catch (error) 
+  {
     console.error(error);
     res.status(500).json({ message: "Internal Server Error" });
   }
