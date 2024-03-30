@@ -22,7 +22,7 @@ import {
   circle,
 } from "../../utils/Icons";
 import Button from "../Button/Button";
-import dateFormat from "../../utils/dateFormat";
+import dateFormat from "../../utils/dateFormat.jsx";
 
 const IncomeItem = ({
   id,

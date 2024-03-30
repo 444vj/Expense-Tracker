@@ -22,7 +22,7 @@ const Form = () => {
 
     const handleInput = name => e => {
         setInputState({...inputState, [name]: e.target.value})
-        setError('')
+        setError('') //to clear out the form once the error appears
     }
 
     const handleSubmit = e => {
