@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"nodemon app.js"
+    "start":"nodemon app.js",
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js"
   },
   "author": "",
   "license": "ISC",
