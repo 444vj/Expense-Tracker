@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import avatar from "../../img/avatar.png";
+import avatar from "../../img/avatar.jpg";
 import { menuItems } from "../../utils/MenuItems";
 import { signout } from "../../utils/Icons.jsx";
 
