@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import avatar from "../../img/avatar.jpg";
 import { menuItems } from "../../utils/MenuItems";
-import { signout } from "../../utils/Icons.jsx";
+
 
 const Navigation = ({ active, setActive }) => {
   const NavStyled = styled.nav`
@@ -105,9 +105,6 @@ const Navigation = ({ active, setActive }) => {
         })}
       </ul>
 
-      <div className="bottom-nav">
-        <li>{signout} Sign Out</li>
-      </div>
     </NavStyled>
   );
 };
