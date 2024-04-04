@@ -1,10 +1,10 @@
-**# MERN Stack Expense Tracker**
+# MERN Stack Expense Tracker
 
 This project is a full-stack expense tracker application designed to empower you with comprehensive cash flow monitoring. It leverages the MERN stack (MongoDB, Express.js, React, and Node.js) to provide a user-friendly and feature-rich experience.
 
-**Features:**
+Features:
 
- **Intuitive Interface:** The React-powered frontend offers a streamlined user experience for entering, categorizing, and visualizing your expenses.
+ Intuitive Interface: The React-powered frontend offers a streamlined user experience for entering, categorizing, and visualizing your expenses.
  **Data Persistence:** The Express.js backend API ensures secure and scalable storage of your financial data in a MongoDB database.
  **Robust Testing:** Rigorous testing with Postman guarantees the reliability and functionality of the API and the overall application.
 
