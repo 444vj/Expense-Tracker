@@ -50,8 +50,7 @@ This project is a full-stack expense tracker application designed to empower you
 
 #### Contributing
 
-If you'd like to contribute to this project, please create a pull request outlining the changes you wish to make. Refer to the contributing guidelines (if available) for additional details.
-
+If you'd like to contribute to this project, please create a pull request outlining the changes you wish to make.
 
 
 
